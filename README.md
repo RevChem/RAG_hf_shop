@@ -48,4 +48,4 @@ uvicorn app.main:app --port 8000 --host 0.0.0.0
 - **LangChain** - работа с языковыми моделями
 - **HuggingFace** - языковые модели и эмбеддинги
 - **PyJWT** - аутентификация через JWT
-- **BeautifulSoup/Scrapy** - парсинг данных (уточните, что использовали)
+- **BeautifulSoup** - парсинг данных \
