@@ -19,10 +19,8 @@ ALGORITHM = HS256
 ### Запуск API 
 
 ```bash
-uvicorn app.main:app --reload
+uvicorn app.main:app --port 8000 --host 0.0.0.0
 ```
-
-API доступен по адресу: `uvicorn app.main:app --port 8000 --host 0.0.0.0`
 
 ## API Endpoints
 
