@@ -26,7 +26,7 @@ def parse_catalog_page(url: str) -> List[Dict[str, Any]]:
         if not link_tag:
             continue
 
-        product_url = "https://www.flip.kz" + link_tag['href'].strip()
+        product_url = "https://www." + link_tag['href'].strip()
         title_tag = block.find('div', class_='title')
         price_tag = block.find('span', class_='price')
         description_tag = block.find('div', class_='description')
@@ -91,7 +91,7 @@ def generate_chroma_db() -> Optional[Chroma]:
     try:
         os.makedirs(settings.CHROMA_PATH, exist_ok=True)
 
-        catalog_url = "https://www.flip.kz/catalog?subsection=6118"
+        catalog_url = "https://www."
         products = parse_catalog_page(catalog_url)
 
         if not products:
