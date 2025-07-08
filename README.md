@@ -22,13 +22,6 @@ ALGORITHM = HS256
 uvicorn app.main:app --port 8000 --host 0.0.0.0
 ```
 
-## API Endpoints
-
-### Аутентификация
-
-- `POST /token` - Получение JWT токена
-- `POST /register` - Регистрация нового пользователя
-
 ## Структура проекта
 
 ```
