@@ -1,51 +1,28 @@
-Проект представляет собой RAG-систему (Retrieval-Augmented Generation) для работы с данными о смартфонах из интернет-магазина. Система включает:
+Данный проект представляет собой RAG-систему для работы с данными о смартфонах из интернет-магазина, включающая в себя:
 
-1. Парсинг данных о смартфонах
-2. Хранение данных в ChromaDB
-3. Использование языковых моделей через LangChain и HuggingFace
-4. API на FastAPI с авторизацией через JWT (PyJWT)
-
-## Установка и настройка
-
-### Предварительные требования
-
-- Python 3.8+
-- Docker (опционально, для запуска ChromaDB в контейнере)
-
-### Установка зависимостей
-
-```bash
-pip install -r requirements.txt
-```
+1. Парсинг данных о смартфонах с сохранением данных в ChromaDB
+2. Использование языковых моделей через LangChain
+3. API на FastAPI с авторизацией через JWT
 
 ### Переменные окружения
 
 Создайте файл `.env` в корне проекта со следующими переменными:
 
 ```
-DATABASE_URL=localhost:8000
-CHROMA_DB_PATH=./chroma_db
-JWT_SECRET_KEY=your-secret-key
-JWT_ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=30
-HUGGINGFACEHUB_API_TOKEN=your-huggingface-token
+HF_MODEL_NAME = "deepseek-ai/DeepSeek-R1"
+HF_MODEL_NAME_2 = "Vikhrmodels/Vikhr-Nemo-12B-Instruct-R-21-09-24"
+HF_API_TOKEN = "..."
+SECRET_KEY = ...  
+ALGORITHM = HS256  
 ```
 
-## Запуск системы
-
-### Запуск парсера
-
-```bash
-python scripts/parse_phones.py
-```
-
-### Запуск API сервера
+### Запуск API 
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-API будет доступно по адресу: `http://localhost:8000`
+API доступен по адресу: `uvicorn app.main:app --port 8000 --host 0.0.0.0`
 
 ## API Endpoints
 
@@ -54,45 +31,23 @@ API будет доступно по адресу: `http://localhost:8000`
 - `POST /token` - Получение JWT токена
 - `POST /register` - Регистрация нового пользователя
 
-### Работа со смартфонами
-
-- `GET /phones` - Получить список смартфонов (требует аутентификации)
-- `GET /phones/search` - Поиск смартфонов по запросу (RAG-система)
-- `POST /phones` - Добавить новый смартфон (админ)
-- `PUT /phones/{id}` - Обновить информацию о смартфоне (админ)
-- `DELETE /phones/{id}` - Удалить смартфон (админ)
-
-## Примеры запросов
-
-### Получение токена
-
-```bash
-curl -X POST "http://localhost:8000/token" \
--H "Content-Type: application/json" \
--d '{"username":"user","password":"password"}'
-```
-
-### Поиск смартфонов
-
-```bash
-curl -X GET "http://localhost:8000/phones/search?query=лучший смартфон с хорошей камерой" \
--H "Authorization: Bearer YOUR_JWT_TOKEN"
-```
-
 ## Структура проекта
 
 ```
 .
-├── app/                  # Основное приложение FastAPI
-│   ├── api/              # API endpoints
-│   ├── core/             # Основная логика
-│   ├── models/           # Pydantic и DB модели
-│   ├── services/         # Сервисные классы
-│   └── main.py           # Точка входа FastAPI
-├── chroma_db/            # База данных ChromaDB
-├── scripts/              # Скрипты для парсинга и инициализации
-├── requirements.txt      # Зависимости
-└── .env                  # Переменные окружения
+├── app/                  
+│   ├── api/             
+│   ├── core/             
+│   ├── models/          
+│   ├── services/         
+│   ├── main.py
+│   ├── config.py
+│   ├── users.json
+│   └── .env        
+├── chroma_db/           
+├── scripts/             
+├── requirements.txt      
+└── .env                 
 ```
 
 ## Используемые технологии
@@ -103,11 +58,3 @@ curl -X GET "http://localhost:8000/phones/search?query=лучший смартф
 - **HuggingFace** - языковые модели и эмбеддинги
 - **PyJWT** - аутентификация через JWT
 - **BeautifulSoup/Scrapy** - парсинг данных (уточните, что использовали)
-
-## Лицензия
-
-[Укажите вашу лицензию, например MIT]
-
-## Контакты
-
-Ваше имя/контакты для связи по вопросам проекта
