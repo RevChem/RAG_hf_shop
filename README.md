@@ -49,3 +49,8 @@ uvicorn app.main:app --port 8000 --host 0.0.0.0
 - **HuggingFace** - языковые модели и эмбеддинги
 - **PyJWT** - аутентификация через JWT
 - **BeautifulSoup** - парсинг данных \
+
+## При создании проекта использовались следующие источники:
+
+- https://habr.com/ru/companies/amvera/articles/902868/
+- https://github.com/decodingml/llm-twin-course/tree/main?tab=readme-ov-file
