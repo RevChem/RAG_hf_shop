@@ -52,5 +52,7 @@ uvicorn app.main:app --port 8000 --host 0.0.0.0
 
 ## При создании проекта использовались следующие источники:
 
-- https://habr.com/ru/companies/amvera/articles/902868/
 - https://github.com/decodingml/llm-twin-course/tree/main?tab=readme-ov-file
+- https://habr.com/ru/companies/amvera/articles/902868/
+- https://habr.com/ru/companies/amvera/articles/897830/
+- https://habr.com/ru/companies/ruvds/articles/796885/
