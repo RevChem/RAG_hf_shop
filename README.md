@@ -1,7 +1,7 @@
 Данный проект представляет собой относительно простую RAG-систему, предназначенную для покупателей интернет-магазина. Включает в себя:
 
 1. Парсинг данных о смартфонах с сохранением данных в ChromaDB
-2. Использование языковых моделей Hugging Face (в комментариях также указана возможность использования deepseek или chatgpt при условии покупик токенов) через LangChain
+2. Использование языковых моделей Hugging Face (в комментариях также указана возможность использования deepseek или chatgpt при условии наличия API-токенов) через LangChain
 3. API на FastAPI с авторизацией через JWT
 
 ### Переменные окружения
@@ -9,11 +9,11 @@
 Создайте файл `.env` в корне проекта со следующими переменными:
 
 ```
-HF_MODEL_NAME = "deepseek-ai/DeepSeek-R1"   # 
-HF_MODEL_NAME_2 = "Vikhrmodels/Vikhr-Nemo-12B-Instruct-R-21-09-24"   #
-HF_API_TOKEN = "..."   #
-SECRET_KEY = ...   #
-ALGORITHM = HS256   #
+HF_MODEL_NAME = "deepseek-ai/DeepSeek-R1"   # Пример модели
+HF_MODEL_NAME_2 = "Vikhrmodels/Vikhr-Nemo-12B-Instruct-R-21-09-24"   # Русскоязычная LLM
+HF_API_TOKEN = "..."   # Токен доступа к Hugging Face
+SECRET_KEY = ...   # Ключ для JWT-аутентификации
+ALGORITHM = HS256   #  Алгоритм подписи JWT
 ```
 
 ### Запуск API 
